@@ -3,7 +3,7 @@ import * as z from "zod";
 export const MealTypeSchema = z.enum(["breakfast", "lunch", "dinner", "snack"]);
 export type MealType = z.infer<typeof MealTypeSchema>;
 
-interface Login {
+export interface Login {
   emailOrUsername: string;
   password: string;
 }
@@ -54,7 +54,6 @@ export const LogEntrySchema = z.object({
 export type LogEntry = z.infer<typeof LogEntrySchema>;
 
 export {
-  Login,
   TodayDataType,
   TodayDataSchema,
   weeklyDataSchema,

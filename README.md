@@ -34,11 +34,11 @@ To run the app locally, follow these steps:
    ```
 3. Install dependencies:
    ```bash
-   npm install
+   pnpm install
    ```
 4. Start the development server:
    ```bash
-   npm run dev
+   pnpm run dev
    ```
 5. Open your browser and go to `http://localhost:3000` to see the app in action.
 

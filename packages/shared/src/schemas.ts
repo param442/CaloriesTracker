@@ -1,4 +1,4 @@
-import { z } from "zod";
+import * as z from "zod";
 
 export const MealTypeSchema = z.enum(["breakfast", "lunch", "dinner", "snack"]);
 export type MealType = z.infer<typeof MealTypeSchema>;

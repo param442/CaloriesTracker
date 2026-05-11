@@ -1,4 +1,3 @@
-import React from "react";
 import GridComponents from "./gridComponents";
 import NutritionCard from "./NutritionCard";
 const NutritionLog = () => {

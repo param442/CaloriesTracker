@@ -1,7 +1,6 @@
 "use client";
 import { Button } from "@/components/ui/button";
-import { todayData } from "@calorie-tracker/shared";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -10,8 +9,6 @@ import {
 import { Calendar } from "@/components/ui/calendar";
 
 import NutritionLog from "@/components/dashboard/NutritionLog";
-import { Field, FieldDescription, FieldLabel } from "@/components/ui/field";
-import { Input } from "@/components/ui/input";
 
 const date = new Date();
 const LogFood = () => {

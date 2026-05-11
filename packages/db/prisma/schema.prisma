@@ -1,0 +1,130 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+
+/*
+1. I will be simple, First I will create a table for userAuth with fields like
+- id 
+- email
+- passwordHash
+- createdAt
+- updatedAt
+-OauthProvider (enum: GOOGLE, FACEBOOK, GITHUB, etc.)
+-OauthId (string, nullable)
+- there will be relationship between passwordHash and OauthProvider, if OauthProvider is not null then passwordHash will be null and vice versa. This way we can support both traditional email/password authentication and OAuth-based authentication.
+
+2. I will create a separate table for UserData with fields like
+- id
+- userId (foreign key to userAuth)
+- firstName
+- lastName
+- dateOfBirth
+- gender
+- height
+- activityLevel (enum: SEDENTARY, LIGHT, MODERATE, ACTIVE, VERY_ACTIVE)
+- createdAt
+- updatedAt
+- goal (enum: WEIGHT_LOSS, MAINTENANCE, MUSCLE_GAIN)
+- currentWeight
+- targetWeight
+- calorieIntakeGoal (which will be calculated based on the user's data and goal using the Mifflin-St Jeor Equation and activity level)
+
+
+3. This table will store the user's daily calorie intake and expenditure data, with fields like
+- id
+- userId (foreign key to userAuth)
+- date
+- caloriesConsumed
+- caloriesBurned
+- netCalories (caloriesConsumed - caloriesBurned)
+- createdAt
+- updatedAt
+
+4. this is table which will act as a bridge. It main task would be to get weekly or monthly data for the user. It will have fields like
+- id
+- userId (foreign key to userAuth)
+- date (this will be the date for which we are storing the data, it will be the start of the week or month)
+- caloriesConsumed
+- caloriesBurned
+- netCalories (caloriesConsumed - caloriesBurned)
+- createdAt
+- updatedAt
+
+
+
+Then I will create a table for userProfile with fields like
+
+
+*/
+
+
+
+
+model Account {
+  id                String   @id @default(cuid())
+  userAuthId        String   @unique
+  provider          String
+  providerAccountId String
+  refresh_token     String?  
+  access_token      String?  
+  expires_at        Int?     
+  token_type        String?  
+  scope             String?  
+  id_token          String?  
+  session_state     String?  
+
+  userAuth          UserAuth @relation(fields: [userAuthId], references: [id])
+}
+
+
+model session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userAuthId   String
+  expires      DateTime
+
+  userAuth     UserAuth @relation(fields: [userAuthId], references: [id])
+}
+
+
+
+model UserAuth {
+  id            String   @id @default(cuid())
+  email         String   @unique
+  passwordHash  String?  
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+  account       Account[]
+  session       session[]
+  userData      UserData?
+}
+
+model UserData {
+  id                 String   @id @default(cuid())
+  userId             String   @unique
+  firstName          String
+  lastName           String
+  dateOfBirth       DateTime
+  gender             String
+  height             Float
+  activityLevel      String
+  goal               String
+  currentWeight      Float
+  targetWeight       Float
+  calorieIntakeGoal Float
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+  userAuth           UserAuth @relation(fields: [userId], references: [id])
+}

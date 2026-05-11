@@ -1,7 +1,7 @@
 "use client";
 import { Button } from "@/components/ui/button";
 import { todayData } from "@calorie-tracker/shared";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -13,11 +13,12 @@ import NutritionLog from "@/components/dashboard/NutritionLog";
 import { Field, FieldDescription, FieldLabel } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
 
+const date = new Date();
 const LogFood = () => {
-  const [dataDetails, setDateDetails] = useState({
+  const [dataDetails, setDateDetails] = useState(() => ({
     Day: "Today,",
-    date: new Date(),
-  });
+    date: date,
+  }));
 
   const updateDataDetails = (date: Date | undefined) => {
     if (!date) return;
@@ -31,7 +32,7 @@ const LogFood = () => {
   return (
     <>
       <div className="min-h-full ">
-        <div className="flex p-10 w-screen justify-between items-center">
+        <div className="flex p-10 w-full justify-between items-center">
           <span className=" ">
             <h1 className="text-2xl font-bold">Log Food</h1>
           </span>
@@ -59,15 +60,36 @@ const LogFood = () => {
           </DropdownMenu>
         </div>
         <NutritionLog />
-        <div className="flex items-center justify-between p-10">
-          <Field>
-            <FieldLabel htmlFor="input-field-username">Search Food</FieldLabel>
-            <Input
-              id="input-field-username"
-              type="text"
-              placeholder="Enter food name"
-            />
-          </Field>
+        <div className="flex h-full  flex-col   p-10">
+          <section className="  h-[30%]">
+            <h1>Breakfast</h1>
+
+            <hr className="w-full border-0 h-px bg-gray-800" />
+            <Button variant="link" className="ml-4 cursor-pointer mt-4">
+              Add Food to Breakfast
+            </Button>
+          </section>
+          <section>
+            <h1>Lunch</h1>
+            <hr className="w-full border-0 h-px bg-gray-800" />
+            <Button variant="link" className="ml-4 cursor-pointer mt-4">
+              Add Food to Lunch
+            </Button>
+          </section>
+          <section>
+            <h1>Dinner</h1>
+            <hr className="w-full border-0 h-px bg-gray-800" />
+            <Button variant="link" className="ml-4 cursor-pointer mt-4">
+              Add Food to Dinner
+            </Button>
+          </section>
+          <section>
+            <h1>Snacks</h1>
+            <hr className="w-full border-0 h-px bg-gray-800" />
+            <Button variant="link" className="ml-4 cursor-pointer mt-4">
+              Add Food to Snacks
+            </Button>
+          </section>
         </div>
       </div>
     </>

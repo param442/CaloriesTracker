@@ -109,7 +109,7 @@ importers:
   apps/web:
     dependencies:
       '@calorietracker/shared':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../../packages/shared
       '@tanstack/react-form':
         specifier: ^1.28.0

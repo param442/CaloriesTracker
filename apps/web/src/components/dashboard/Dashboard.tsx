@@ -1,9 +1,8 @@
 "use client";
 import { JSX, useState, useMemo } from "react";
 import { Button } from "../ui/button";
-import { todayData, weeklyData } from "@calorie-tracker/shared";
+import { todayData, weeklyData, BreakdownData } from "@calorietracker/shared";
 import TodayChart from "./todayChart";
-import { BreakdownData } from "@calorie-tracker/shared";
 import WeekChart from "./weekChart";
 import Breakdown from "./breakdown_chart";
 import GridComponents from "./gridComponents";

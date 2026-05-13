@@ -2,7 +2,7 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   /* config options here */
-  transpilePackages: ["@calorie-tracker/shared"],
+  transpilePackages: ["@calorietracker/shared"],
 };
 
 export default nextConfig;

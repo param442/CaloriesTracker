@@ -9,7 +9,7 @@ import {
   ChartConfig,
 } from "@/components/ui/chart";
 import { CardContent } from "../ui/card";
-import { TodayDataType } from "@calorie-tracker/shared";
+import { TodayDataType } from "@calorietracker/shared";
 import Loader from "../ui/loader";
 import { cn } from "@/lib/utils";
 

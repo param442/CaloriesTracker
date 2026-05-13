@@ -3,7 +3,7 @@
 import ChartCard from "@/components/dashboard/chart_card";
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid } from "recharts";
 import { cn } from "@/lib/utils";
-import { WeeklyDataType } from "@calorie-tracker/shared";
+import { WeeklyDataType } from "@calorietracker/shared";
 import Loader from "../ui/loader";
 import {
   ChartContainer,

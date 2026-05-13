@@ -1,5 +1,5 @@
 "use client";
-import { BreakdownDataType, MEAL_COLORS } from "@calorie-tracker/shared";
+import { BreakdownDataType, MEAL_COLORS } from "@calorietracker/shared";
 import { Cell, Pie, PieChart } from "recharts";
 import ChartCard from "@/components/dashboard/chart_card";
 import { cn } from "@/lib/utils";

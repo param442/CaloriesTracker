@@ -14,7 +14,7 @@ I am using turbo monorepo to manage my projects. This repository contains a calo
 
 ## Web App Link
 
-You can access the web app at [https://calorie-tracker-app.vercel.app/](https://calorie-tracker-app.vercel.app/).
+You can access the web app at [https://calories-tracker-web-azure.vercel.app/](https://calories-tracker-web-azure.vercel.app/).
 
 # Features
 

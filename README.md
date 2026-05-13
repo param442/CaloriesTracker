@@ -12,6 +12,10 @@ I am using turbo monorepo to manage my projects. This repository contains a calo
 - Prisma (for database management)
 - PostgreSQL (as the database)
 
+## Web App Link
+
+You can access the web app at [https://calorie-tracker-app.vercel.app/](https://calorie-tracker-app.vercel.app/).
+
 # Features
 
 - User authentication (sign up, log in, log out)

@@ -2,8 +2,11 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 
 import Providers from "./provider";
-// @ts-expect-error CSS import not typed
-import "./styles/globals.css";
+
+// TypeScript may not have module declarations for CSS imports in this project setup.
+// Ignore the next line so the side-effect import of the global stylesheet doesn't error.
+// @ts-ignore
+import "./globals.css";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],

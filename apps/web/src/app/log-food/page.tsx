@@ -12,6 +12,7 @@ import NutritionLog from "@/components/dashboard/NutritionLog";
 import { Input } from "@/components/ui/input";
 import { Minimize } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { MealSection } from "@/components/ui/mealSection";
 
 const date = new Date();
 const LogFood = () => {
@@ -69,11 +70,12 @@ const LogFood = () => {
           </DropdownMenu>
         </div>
         <NutritionLog />
-        <div className="flex h-full mb-3  flex-col   p-10">
+        <div className=" h-full mb-3  flex-col   p-10">
           {meals.map((meal) => (
             <section key={meal}>
               <h1>{meal}</h1>
               <hr className="w-full border-0 h-px bg-gray-800" />
+              <MealSection label={meal} />
               <Button
                 variant="link"
                 onClick={() =>
